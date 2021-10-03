@@ -20,16 +20,16 @@ class UserManager(models.Manager):
             errors['email'] = "Invalid email address"
         if postData['password'] != postData['confirm_password']:
             errors["password"] = "Passwords don't match"
-        if len(postData['password']) < 8 or len(postData['password']) > 16:
-            errors["password"] = "Password must be 8-16 charachters long"
+        if len(postData['password']) < 8 :
+            errors["password"] = "Password must be at least 8 charachters long"
         if len(postData['birthday']) == 0:
             errors["birthday"] = "Birthday is required"
         else:
             a = datetime.strptime(str(datetime.now().date()), date_format)
             b = datetime.strptime(str(birthday), date_format)
             delta = b - a
-            if delta.days >= -4745:
-                errors["birthday"] = "Must be at least 13 years of age to sign up"
+            if delta.days >= -6570:
+                errors["birthday"] = "Must be at least 18 years of age to sign up as a Parent"
         print(errors)
         return errors
 
@@ -69,6 +69,7 @@ class User(models.Model):
     first = CharField(max_length=200)
     last = CharField(max_length=200)
     email = CharField(max_length=200)
+    birthday = DateField(auto_now=False)
     password = CharField(max_length=16)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
