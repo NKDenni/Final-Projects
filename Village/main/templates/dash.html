@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% include 'partials/head.html' %}
+<body>
+    <div class="container">
+        {% include 'partials/navbar.html' %}
+        <div class="row border border-dark" style="background-color: #E5E5E5; min-height: 780px;">
+            <div class="row col px-5 mt-3 d-flex flex-column">
+                <div class="ms-4 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 140px;">
+                    <h5 class="mt-2 mb-0 text-center">Profile</h5>
+                    <div class="col ms-3 row d-flex flex-row">
+                        <img style="max-height: 95px; max-width: 115px;" src="{% static 'img/childpic.png' %}" alt="Child Pic" />
+                        <div class="col d-flex flex-column justify-content-center align-items-center">
+                            <p class="col mb-0">Name</p> <!-- need to change thest to python variables-->
+                            <p class="col mb-0">Birthday</p>
+                            <p class="col mb-0">Age</p>
+                            <p class="col mb-0">Gender</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 110px">
+                    <h5 class="mt-2 mb-0 text-center">Summary</h5>
+                    <div class="row d-flex justify-content-center align-content-center">
+                        <div class="m-2 col-10 text-center text-muted" style="max-height: 50px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, deleniti perferendis repellendus nostrum, rerum porro dolores qui illum provident quo quisquam tempora. Neque aspernatur quam quasi temporibus? At, dolores quibusdam.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col bg bg-color-light">
+
+            </div>
+            <div class="col bg bg-color-light">
+
+            </div>
+            <div class="row">
+                <div class="col bg bg-color-warning border-dark"></div>
+            </div>
+        </div>
+        {% include 'partials/footer.html' %}
+    </div>
+</body>
+</html>
