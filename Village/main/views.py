@@ -1,3 +1,5 @@
+from django.contrib.messages.api import error
+from django.http import request
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import User
@@ -11,13 +13,7 @@ def login_reg(request):
 
 def register(request):
     if request.method == "POST":
-
-        # bound_form = UserForm(request.POST)
-
-        # if bound_form.is_valid():
-        #     pass
-            # new_note = Note.objects.create(text=request.POST['text'])
-
+        
         errors = User.objects.basic_validator(request.POST)
         user_list = User.objects.filter(email=request.POST['email'])
         if user_list:
@@ -38,32 +34,37 @@ def register(request):
             password=hashed_pw
         )
         request.session['log_user'] = user1.id
-        return redirect('/success')
+        return redirect('/dash')
     return redirect('/')
 
 def login(request):
     if request.method == "POST":
         user = User.objects.filter(email=request.POST['email'])
-
         if user:
             log_user = user[0]
             if bcrypt.checkpw(request.POST['password'].encode(), log_user.password.encode()):
                 request.session['log_user'] = log_user.id
-                return redirect('/success')
+                return redirect('/dash')
         messages.error(request, "Email or password is incorrect", extra_tags='log_user')
-    return redirect("/")
+    return redirect('/')
 
 def dash(request):
+    # if 'log_user' not in request.session:
+    #     request.session.clear()
+    #     return redirect('/')
     return render(request, 'dash.html')
 
-def success(request):
-    if request.method == "POST":
-        context = {
-            'log_user': User.objects.get(id=request.session['log_user'])
-        }
-        return render(request, 'success.html', context)
-    else:
-        return redirect('/')
+def profile(request):
+    return render(request, 'profile.html')
+    # if request.method == "POST":
+    #     context = {
+    #         'log_user': User.objects.get(id=request.session['log_user'])
+    #     }
+    #     return render(request, 'success.html', context)
+    # else:
+    #     return redirect('/')
+
+
 
 def logout(request):
     request.session.clear()

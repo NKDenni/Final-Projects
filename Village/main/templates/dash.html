@@ -5,35 +5,216 @@
 <body>
     <div class="container">
         {% include 'partials/navbar.html' %}
-        <div class="row border border-dark" style="background-color: #E5E5E5; min-height: 780px;">
+        <div class="row border border-dark d-flex justify-content-center" style="background-color: #E5E5E5; min-height: 800px;">
             <div class="row col px-5 mt-3 d-flex flex-column">
                 <div class="ms-4 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 140px;">
-                    <h5 class="mt-2 mb-0 text-center">Profile</h5>
+                    <a class="my-1 h5 d-flex justify-content-center text-dark">Profile</a>
                     <div class="col ms-3 row d-flex flex-row">
                         <img style="max-height: 95px; max-width: 115px;" src="{% static 'img/childpic.png' %}" alt="Child Pic" />
                         <div class="col d-flex flex-column justify-content-center align-items-center">
-                            <p class="col mb-0">Name</p> <!-- need to change thest to python variables-->
+                            <!-- need to change thest to python variables-->
+                            <p class="col mb-0">Name</p> 
                             <p class="col mb-0">Birthday</p>
                             <p class="col mb-0">Age</p>
                             <p class="col mb-0">Gender</p>
                         </div>
                     </div>
                 </div>
-                <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 110px">
+                <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 104px">
                     <h5 class="mt-2 mb-0 text-center">Summary</h5>
                     <div class="row d-flex justify-content-center align-content-center">
                         <div class="m-2 col-10 text-center text-muted" style="max-height: 50px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, deleniti perferendis repellendus nostrum, rerum porro dolores qui illum provident quo quisquam tempora. Neque aspernatur quam quasi temporibus? At, dolores quibusdam.</div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
+                <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
+                    <div class="row d-flex align-content-center">
+                        <img class="col mt-2" style="height: 20px; max-width: 42px;" src="{% static 'img/like.png' %}" alt="like icon"/>
+                        <h5 class="mt-2 mb-0 ms-0 ps-0 col">Likes</h5>
+                    </div>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center">
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
+                <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
+                    <div class="row d-flex align-content-center">
+                        <img class="col mt-2" style="height: 20px; max-width: 42px;" src="{% static 'img/dislike.png' %}" alt="like icon"/>
+                        <h5 class="mt-2 mb-0 ms-0 ps-0 col">Dislikes</h5>
+                    </div>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center">
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
+                <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
+                    <div class="row d-flex align-content-center align-items-center">
+                        <img class="col mt-2" style="height: 14px; max-width: 44px;" src="{% static 'img/strength.png' %}" alt="like icon"/>
+                        <h5 class="mt-2 mb-0 ms-0 ps-0 col">Strengths</h5>
+                    </div>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center">
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
+                <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
+                    <div class="row d-flex align-content-center">
+                        <img class="col mt-2" style="height: 20px; max-width: 42px;" src="{% static 'img/weakness.png' %}" alt="like icon"/>
+                        <h5 class="mt-2 mb-0 ms-0 ps-0 col">Weaknesses</h5>
+                    </div>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center">
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+                        <!-- need to change thest to python variables-->
                     </div>
                 </div>
             </div>
-            <div class="col bg bg-color-light">
-
+            <div class="row col px-5 mt-3 d-flex flex-column align-items-center">
+                <h5 class="mt-1 text-center text-decoration-underline">Medical Information</h5>
+                <div class="mt-1 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
+                    <h5 class="mt-2 mb-0 text-center">Emergency Contact</h5>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
+                        <div class="col-10" style="color: #006FBB;">Contact name</div>
+                        <!-- need to change thest to python variables-->
+                        <div class="col-10" style="color: #006FBB;">Contact Phone number</div>
+                    </div>
+                </div>
+                <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
+                    <h5 class="mt-2 mb-0 text-center">Diagnosis</h5>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
+                        <div class="col-10" style="color: #006FBB;">Diagnosis</div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
+                <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
+                    <h5 class="mt-2 mb-0 text-center">Dietary Restrictions</h5>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
+                        <div class="col-10" style="color: #006FBB;">Dietary Restrictions</div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
+                <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
+                    <h5 class="mt-2 mb-0 text-center">Physical Restrictions</h5>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
+                        <div class="col-10" style="color: #006FBB;">Physical Restrictions</div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
+                <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
+                    <h5 class="mt-2 mb-0 ms-1 text-center">Medications</h5>
+                    <hr class="my-1">
+                    <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
+                        <div class="col-10" style="color: #006FBB;">Medications</div>
+                        <!-- need to change thest to python variables-->
+                    </div>
+                </div>
             </div>
-            <div class="col bg bg-color-light">
-
+            <div class="row col ps-4 me-5 mt-3 d-flex flex-column">
+                <h5 class="h5 mt-1 me-5 text-center text-dark text-decoration-underline">Recent Behaviors / Episode</h5>
+                <div class="mt-1 col bg bg-light border rounded-3 shadow" style="max-width: 370px; max-height: 475px">
+                    <div class="row my-2 d-flex justify-content-center align-content-center">
+                        <!-- need to change these to change to a loop through a dictionary-->
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Hitting<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/2/21, 12:00pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row d-flex align-items-center">
+                            <p class="col-7 text-muted mb-0 pe-0">Biting<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/5/21, 4:40pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Scratching<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/7/21, 10:00am <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Throwing<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/8/21, 9:10am <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Pica (eating inedible objects)<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/12/21, 1:00pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Screaming<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/13/21, 3:00pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Elopement (running away or wandering off)<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/15/21, 2:00pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Hitting<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/2/21, 12:00pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row d-flex align-items-center">
+                            <p class="col-7 text-muted mb-0 pe-0">Biting<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/5/21, 4:40pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Scratching<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/7/21, 10:00am <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Screaming<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/13/21, 12:00pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                        <div class="row">
+                            <p class="col-7 text-muted mb-0 pe-0">Screaming<!-- need to change thest to python variables--></p>
+                            <p class="col-5 text-muted mb-0 p-0 pe-2 d-flex align-items-center justify-content-end">10/13/21, 12:00pm <!-- need to change thest to python variables--></p>
+                            <hr class="my-1">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row d-flex mt-3 justify-content-center">
+                    <a class="col-sm-5 ms-4 btn text-white" style="background-color: #6CB54F; border-radius: 23px;" href="/#">Add Behavior</a>
+                    <a class="col-sm-5 ms-4 btn text-white" style="background-color: #6CB54F; border-radius: 23px;" href="/#">View History</a>
+                </div>
             </div>
-            <div class="row">
-                <div class="col bg bg-color-warning border-dark"></div>
+            <div class="row mt-3 d-flex justify-content-center" style="height: 188px;">
+                <div class="col border border-dark shadow" style="background-color: #FFFBEA;">
+                    <div class="mt-2 row d-flex align-items-top justify-content-center">
+                        <!-- This will be a place holder for the actual chart -->
+                        <div class="col-4 mt-4 text-center">
+                            <img style="max-height: 116px; max-width: 161px;" src="{% static '/img/chartPH.png' %}" alt="PlaceHolder Chart">
+                        </div>
+                        <div class="col-4 mt-3 text-muted d-flex align-items-center text-center">You will be able to see the graph of all behaviors when you have tracked behaviors for more than one day!
+                        </div>
+                        <div class="col-4 text-muted text-end align-content-top">Day | Week | Month | Year</div>
+                    </div>
+                    <div class="row mt-3 d-flex flex-row col align-items-bottom">
+                        <p class="col mb-0 text-muted">January</p>
+                        <p class="col mb-0 text-muted">Feburary</p>
+                        <p class="col mb-0 text-muted">March</p>
+                        <p class="col mb-0 text-muted">April</p>
+                        <p class="col mb-0 text-muted">May</p>
+                        <p class="col mb-0 text-muted">June</p>
+                        <p class="col mb-0 text-muted">July</p>
+                        <p class="col mb-0 text-muted">August</p>
+                        <p class="col mb-0 text-muted">September</p>
+                        <p class="col mb-0 text-muted">October</p>
+                        <p class="col mb-0 text-muted">November</p>
+                        <p class="col mb-0 text-muted">December</p>
+                    </div>
+                </div>
             </div>
         </div>
         {% include 'partials/footer.html' %}
