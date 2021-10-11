@@ -14,6 +14,7 @@ import bcrypt
 def login_reg(request):
     return render(request, 'login_reg.html')
 
+
 def register(request):
     if request.method == "POST":
         
@@ -41,6 +42,7 @@ def register(request):
         return redirect('/dash')
     return redirect('/')
 
+
 def login(request):
     if request.method == "POST":
         user = User.objects.filter(email=request.POST['email'])
@@ -51,6 +53,7 @@ def login(request):
                 return redirect('/dash')
         messages.error(request, "Email or password is incorrect", extra_tags='log_user')
     return redirect('/')
+
 
 def dash(request):
     if 'log_user' not in request.session:
@@ -82,6 +85,7 @@ def dash(request):
 
     return render(request, 'dash.html', context)
 
+
 def profile(request):
     if 'log_user' not in request.session:
         request.session.clear()
@@ -103,6 +107,7 @@ def profile(request):
         }
 
     return render(request, 'profile.html', context)
+
 
 def update(request):
     if request.method == "POST":
@@ -138,7 +143,6 @@ def update(request):
         this_kid.meds = request.POST['meds']
         this_kid.doc = request.POST['doc']
         this_kid.save()
-
 
     return redirect('/dash')
 
@@ -178,10 +182,22 @@ def new(request):
 
     return redirect('/dash')
 
+
+def behavior(request):
+    if 'log_user' not in request.session:
+        request.session.clear()
+        return redirect('/')
+
+    return render(request, 'behavior.html')
+
+
 def history(request):
-    user=User.objects.get(id=request.session['log_user'])
+    if 'log_user' not in request.session:
+        request.session.clear()
+        return redirect('/')
 
     return render(request,'history.html')
+
 
 def logout(request):
     request.session.clear()
