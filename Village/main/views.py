@@ -181,6 +181,8 @@ def new(request):
             meds=request.POST['meds'],
             doc=request.POST['doc']
         )
+        if request.FILES.get('image'):
+            child1.image = request.FILES['image']
 
     return redirect('/dash')
 
