@@ -6,13 +6,15 @@
             <div class="col-6 align-self-center">
                 <label for="first" class="form-label">First name:</label>
                 <div class="col">
-                    <input type="text" class="form-control" name="first" placeholder="First"
+                    <input type="text" class="form-control" name="first" 
                     {% if messages %}   
                         {% for message in messages %}    
                             {% if 'first' in message.tags %}
                             placeholder="{{ message }}"
                             {% endif %}
                         {% endfor %}
+                        {% else %}
+                        placeholder="First"
                     {% endif %}
                     >
                 </div>
@@ -22,58 +24,64 @@
             <div class="col-6 align-self-center">
                 <label for="last" class="form-label">Last name:</label>
                 <div class="col">
-                    <input type="text" class="form-control" name="last" placeholder="Last"
+                    <input type="text" class="form-control" name="last"
                     {% if messages %}   
                         {% for message in messages %}    
                             {% if 'last' in message.tags %}
                             placeholder="{{ message }}"
                             {% endif %}
                         {% endfor %}
+                        {% else %}
+                        placeholder="Last"
                     {% endif %}
                     >
                 </div>
             </div>
         </div>
-        {% if messages %}   
-            {% for message in messages %}    
-                {% if 'birthday' in message.tags %}
-                <p class="mt-3 text-center" style=color:red;>{{ message }}</p>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
         <div class="form-group row mt-4 d-flex justify-content-center">
             <div class="col-6 align-self-center">
-                <label for="birthday" class="form-label">Birthday:</label>
+                <label for="birthday" class="form-label">Birthday:
+                    {% if messages %}   
+                        {% for message in messages %}    
+                            {% if 'birthday' in message.tags %}
+                            <span class="my-0 text-center" style=color:red;>{{ message }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </label>
                 <div class="col">
                     <input type="date" class="form-control" name="birthday">
                 </div>
             </div>
         </div>
-        {% if messages %}   
-            {% for message in messages %}    
-                {% if 'email' in message.tags %}
-                <p class="mt-3 text-center" style=color:red;>{{ message }}</p>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
         <div class="form-group row mt-4 d-flex justify-content-center">
             <div class="col-6 align-self-center">
-                <label for="email" class="form-label">Email:</label>
+                <label for="email" class="form-label">Email:
+                {% if messages %}   
+                    {% for message in messages %}    
+                        {% if 'email' in message.tags %}
+                        <span class="mt-3 text-center" style=color:red;>{{ message }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </label>
                 <div class="col">
                     <input type="text" class="form-control" name="email" placeholder="example@domain.com">
                 </div>
             </div>
         </div>
-        {% if messages %}   
-            {% for message in messages %}    
-                {% if 'password' in message.tags %}
-                <p class="mt-3 text-center" style=color:red;>{{ message }}</p>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+        
         <div class="form-group row mt-4 d-flex justify-content-center">
             <div class="col-6 align-self-center">
-                <label for="password" class="form-label">Password:</label>
+                <label for="password" class="form-label">Password:
+                {% if messages %}   
+                    {% for message in messages %}    
+                        {% if 'password' in message.tags %}
+                        <span class="my-0 text-center" style=color:red;>{{ message }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </label>
                 <div class="col">
                     <input type="password" class="form-control" name="password" placeholder="Password">
                 </div>

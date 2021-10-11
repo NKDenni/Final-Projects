@@ -6,25 +6,39 @@
     <div class="container">
         {% include 'partials/navbar.html' %}
         <div class="row border border-dark d-flex justify-content-center" style="background-color: #E5E5E5; min-height: 800px;">
+            {% if this_child ==  none %}
+                    {% include 'partials/emptydash.html' %}
+                {% endif %}
+            {% if log_user == this_child.guardian %}
             <div class="row col px-5 mt-3 d-flex flex-column">
                 <div class="ms-4 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 140px;">
                     <a class="my-1 h5 d-flex justify-content-center text-dark">Profile</a>
                     <div class="col ms-3 row d-flex flex-row">
-                        <img style="max-height: 95px; max-width: 115px;" src="{% static 'img/childpic.png' %}" alt="Child Pic" />
+                        <img style="max-height: 95px; max-width: 115px;"
+                        {% if this_child.image %}
+                        src="{{ this_child.image.url }}"
+                        {% else %}
+                        src="{% static 'img/childpic.png' %}"
+                        {% endif %}
+                        alt="Child Pic" />
                         <div class="col d-flex flex-column justify-content-center align-items-center">
-                            <!-- need to change thest to python variables-->
-                            <p class="col mb-0">Name</p> 
-                            <p class="col mb-0">Birthday</p>
-                            <p class="col mb-0">Age</p>
-                            <p class="col mb-0">Gender</p>
+                            <p class="col mb-0">{{this_child.name}}</p> 
+                            <p class="col mb-0">{{this_child.birthday}}</p>
+                            <p class="col mb-0">{{age}} years</p>
+                            <p class="col mb-0">{{this_child.gender}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 104px">
                     <h5 class="mt-2 mb-0 text-center">Summary</h5>
                     <div class="row d-flex justify-content-center align-content-center">
-                        <div class="m-2 col-10 text-center text-muted" style="max-height: 50px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, deleniti perferendis repellendus nostrum, rerum porro dolores qui illum provident quo quisquam tempora. Neque aspernatur quam quasi temporibus? At, dolores quibusdam.</div>
-                        <!-- need to change thest to python variables-->
+                        <div class="m-2 p-0 col-10 text-center text-muted" style="max-height: 50px; overflow: hidden;">
+                            {% if this_child.summary == none %}
+                                Share what you would like others to know about your child.
+                            {% else %}
+                                {{this_child.summary | truncatewords:14 }}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
@@ -34,8 +48,13 @@
                     </div>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center">
-                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                        <!-- need to change thest to python variables-->
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">
+                        {% if this_child.likes %}
+                        {{this_child.likes | truncatewords:5 }}
+                        {% else %}
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
@@ -45,8 +64,13 @@
                     </div>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center">
-                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
-                        <!-- need to change thest to python variables-->
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">
+                        {% if this_child.dislikes %}
+                        {{this_child.dislikes | truncatewords:5 }}
+                        {% else %}
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
@@ -56,7 +80,13 @@
                     </div>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center">
-                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">
+                        {% if this_child.strengths %}
+                        {{this_child.strengths | truncatewords:5 }}
+                        {% else %}
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        {% endif %}
+                        </div>
                         <!-- need to change thest to python variables-->
                     </div>
                 </div>
@@ -67,8 +97,13 @@
                     </div>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center">
-                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
-                        <!-- need to change thest to python variables-->
+                        <div class="col-11 text-start text-muted" style="max-height: 25px; overflow: hidden;">
+                            {% if this_child.weaknesses %}
+                            {{this_child.weaknesses | truncatewords:5 }}
+                            {% else %}
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,41 +113,60 @@
                     <h5 class="mt-2 mb-0 text-center">Emergency Contact</h5>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
-                        <div class="col-10" style="color: #006FBB;">Contact name</div>
-                        <!-- need to change thest to python variables-->
-                        <div class="col-10" style="color: #006FBB;">Contact Phone number</div>
+                        <div class="col-10" style="color: #006FBB;">{{ this_child.econtact }}</div>
+                        <div class="col-10" style="color: #006FBB;">{{ this_child.enumber }}</div>
                     </div>
                 </div>
                 <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
                     <h5 class="mt-2 mb-0 text-center">Diagnosis</h5>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
-                        <div class="col-10" style="color: #006FBB;">Diagnosis</div>
-                        <!-- need to change thest to python variables-->
+                        <div class="col-10" style="color: #006FBB;">
+                            {% if this_child.diag %}
+                            {{ this_child.diag }}
+                            {% else %}
+                            Diagnosis
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
                     <h5 class="mt-2 mb-0 text-center">Dietary Restrictions</h5>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
-                        <div class="col-10" style="color: #006FBB;">Dietary Restrictions</div>
-                        <!-- need to change thest to python variables-->
+                        <div class="col-10" style="color: #006FBB;">
+                            {% if this_child.diet %}
+                            {{ this_child.diet }}
+                            {% else %}
+                            Dietary Restrictions
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
                     <h5 class="mt-2 mb-0 text-center">Physical Restrictions</h5>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
-                        <div class="col-10" style="color: #006FBB;">Physical Restrictions</div>
-                        <!-- need to change thest to python variables-->
+                        <div class="col-10" style="color: #006FBB;">
+                            {% if this_child.phys %}
+                            {{ this_child.phys }}
+                            {% else %}
+                            Physical Restrictions
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
                     <h5 class="mt-2 mb-0 ms-1 text-center">Medications</h5>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
-                        <div class="col-10" style="color: #006FBB;">Medications</div>
-                        <!-- need to change thest to python variables-->
+                        <div class="col-10" style="color: #006FBB;">
+                            {% if this_child.meds %}
+                            {{ this_child.meds }}
+                            {% else %}
+                            Medications
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -186,7 +240,7 @@
                 </div>
                 <div class="row d-flex mt-3 justify-content-center">
                     <a class="col-sm-5 ms-4 btn text-white" style="background-color: #6CB54F; border-radius: 23px;" href="/#">Add Behavior</a>
-                    <a class="col-sm-5 ms-4 btn text-white" style="background-color: #6CB54F; border-radius: 23px;" href="/#">View History</a>
+                    <a class="col-sm-5 ms-4 btn text-white" style="background-color: #6CB54F; border-radius: 23px;" href="/history">View History</a>
                 </div>
             </div>
             <div class="row mt-3 d-flex justify-content-center" style="height: 188px;">
@@ -216,6 +270,7 @@
                     </div>
                 </div>
             </div>
+        {% endif %}
         </div>
         {% include 'partials/footer.html' %}
     </div>

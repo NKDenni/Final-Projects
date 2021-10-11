@@ -1,4 +1,3 @@
-from django.core.exceptions import DisallowedHost
 from django.db import models
 from datetime import datetime
 from django.db.models.deletion import CASCADE
@@ -39,53 +38,64 @@ class UserManager(models.Manager):
 
 
 class ChildManager(models.Manager):
-    def basic_validator(self, postData):
+    def child_validator(self, postData):
         errors = {}
-        date_format = "%Y-%m-%d"
-        birthday = postData['birthday']
+        PHONE_REGEX = re.compile(
+            r'^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})$')
 
         if len(postData['name']) < 5:
             errors["name"] = "Child's full name must be at least 5 characters long"
         if len(postData['birthday']) == 0:
             errors["birthday"] = "Birthday is required"
+        if len(postData['gender']) == 0:
+            errors["gender"] = "Please declare a gender"
+        if len(postData['econtact']) == 0:
+            errors["econtact"] = "Must have an Emergency Contact"
+        if len(postData['enumber']) < 7 or len(postData['enumber']) > 13:
+            errors["enumber"] = "Phone number must be 7-13 digits long"
+        if not PHONE_REGEX.match(postData['enumber']):
+            errors['enumber'] = "Must be a valid phone number"
         print(errors)
         return errors
 
 # Create your models here.
+
+class User(models.Model):
+    #id
+    first = models.CharField(max_length=200)
+    last = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    birthday = models.DateField(auto_now=False)
+    password = models.CharField(max_length=16)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = UserManager()
+
+    def __str__(self):
+        return f"{self.first} {self.last}"
+
 class Child(models.Model):
     # id
-    picture = ImageField(upload_to='child/%Y/%m/%d/', blank=True)
-    name = CharField(max_length=200)
-    birthday = DateField(auto_now=False)
-    gender = CharField(max_length=50, blank=True)
-    econtact = CharField(max_length=200, blank=True)
-    enumber = CharField(max_length=11, blank=True)
-    summary = TextField(max_length=1000, blank=True)
-    likes = TextField(max_length=600, blank=True)
-    dislikes = TextField(max_length=600, blank=True)
-    strengths = TextField(max_length=600, blank=True)
-    weaknesses = TextField(max_length=600, blank=True)
-    diag = TextField(max_length=600, blank=True)
-    diet = TextField(max_length=600, blank=True)
-    phys = TextField(max_length=600, blank=True)
-    meds = TextField(max_length=600, blank=True)
+    image = models.ImageField(upload_to='child/%Y/%m/%d/', blank=True, default='')
+    name = models.CharField(max_length=200, default='Name')
+    birthday = models.DateField(auto_now=False)
+    gender = models.CharField(max_length=50, blank=True)
+    econtact = models.CharField(max_length=200, blank=True)
+    enumber = models.CharField(max_length=13, blank=True)
+    summary = models.TextField( max_length=800, blank=True)
+    guardian = models.ForeignKey(User, related_name='children', on_delete=models.CASCADE)
+    likes = models.TextField(max_length=200, blank=True)
+    dislikes = models.TextField(max_length=200, blank=True)
+    strengths = models.TextField(max_length=200, blank=True)
+    weaknesses = models.TextField(max_length=200, blank=True)
+    diag = models.TextField(max_length=100, blank=True)
+    diet = models.TextField(max_length=100, blank=True)
+    phys = models.TextField(max_length=100, blank=True)
+    meds = models.TextField(max_length=100, blank=True)
+    doc = models.TextField(max_length=300, blank=True)
+    objects = ChildManager()
     # behaviors onetoMany
     # episodes onetoMany
 
     def __str__(self):
-        return f"{self.first} {self.last}"
-
-class User(models.Model):
-    #id
-    first = CharField(max_length=200)
-    last = CharField(max_length=200)
-    email = CharField(max_length=200)
-    birthday = DateField(auto_now=False)
-    password = CharField(max_length=16)
-    child = models.ForeignKey(Child, related_name='guardian',on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = ChildManager()
-
-    def __str__(self):
-        return f"{self.first} {self.last}"
+        return f"{self.name} {self.id}" 

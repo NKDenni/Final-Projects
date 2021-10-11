@@ -2,7 +2,11 @@
 <div class="row d-flex align-items-center justify-content-center" style="background-color: #006FBB; height: 120px;">
     <img style="margin-left: 40px; margin-bottom: 15px; width: 114px; height: 40px;" src="{% static 'img/villagelogo.png' %}" alt="logo">
     <h1 class="col-sm-7 text-white">Village</h1>
-    <a class="col-sm-1 text-white text-center text-decoration-none" href="#">Settings</a>
+    {% if request.get_full_path == '/dash' %}
+    <a class="col-sm-1 text-white text-center text-decoration-none" href="/profile">Profile</a>
+    {% else %}
+    <a class="col-sm-1 text-white text-center text-decoration-none" href="/dash">Dashboard</a>
+    {% endif %}
     <a class="col-sm-1 text-white text-center text-decoration-none" href="#">Get Help</a>
     <a class="col-sm-1 text-white text-center text-decoration-none" href="/logout">Log Out</a>
 </div>

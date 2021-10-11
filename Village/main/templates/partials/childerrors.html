@@ -1,0 +1,23 @@
+<div class="row">
+    {% if messages %}
+    <p class="my-0">
+        {% for message in messages %}    
+            {% if 'name' in message.tags %}
+            <span class="my-1 text-center" style=color:red;>{{ message }}, </span>
+            {% endif %}
+            {% if 'birthday' in message.tags %}
+            <span class="my-1 text-center" style=color:red;>{{ message }}, </span>
+            {% endif %}
+            {% if 'gender' in message.tags %}
+            <span class="my-1 text-center" style=color:red;>{{ message }}, </span>
+            {% endif %}
+            {% if 'econtact' in message.tags %}
+            <span class="my-1 text-center" style=color:red;>{{ message }}, </span>
+            {% endif %}
+            {% if 'enumber' in message.tags %}
+            <span class="my-1 text-center" style=color:red;>{{ message }}</span>
+            {% endif %}
+        {% endfor %}
+    </p>   
+    {% endif %}
+</div>

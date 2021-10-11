@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% include 'partials/head.html' %}
+<body>
+    <div class="container">
+        {% include 'partials/navbar.html' %}
+        <div class="row border border-dark d-flex justify-content-center" style="background-color: #E5E5E5; min-height: 800px;">
+            <div class="row mt-3 d-flex justify-content-center" style="height: 188px;">
+                <div class="col border border-dark shadow" style="background-color: #FFFBEA;">
+                    <div class="mt-2 row d-flex align-items-top justify-content-center">
+                        <!-- This will be a place holder for the actual chart -->
+                        <div class="col-4 mt-4 text-center">
+                            <img style="max-height: 116px; max-width: 161px;" src="{% static '/img/chartPH.png' %}" alt="PlaceHolder Chart">
+                        </div>
+                        <div class="col-4 mt-3 text-muted d-flex align-items-center text-center">You will be able to see the graph of all behaviors when you have tracked behaviors for more than one day!
+                        </div>
+                        <div class="col-4 text-muted text-end align-content-top">Day | Week | Month | Year</div>
+                    </div>
+                    <div class="row mt-3 d-flex flex-row col align-items-bottom">
+                        <p class="col mb-0 text-muted">January</p>
+                        <p class="col mb-0 text-muted">Feburary</p>
+                        <p class="col mb-0 text-muted">March</p>
+                        <p class="col mb-0 text-muted">April</p>
+                        <p class="col mb-0 text-muted">May</p>
+                        <p class="col mb-0 text-muted">June</p>
+                        <p class="col mb-0 text-muted">July</p>
+                        <p class="col mb-0 text-muted">August</p>
+                        <p class="col mb-0 text-muted">September</p>
+                        <p class="col mb-0 text-muted">October</p>
+                        <p class="col mb-0 text-muted">November</p>
+                        <p class="col mb-0 text-muted">December</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'partials/footer.html' %}
+    </div>
+</body>
+</html>
