@@ -164,7 +164,6 @@ def new(request):
             return redirect('/profile')
 
         child1 = Child.objects.create(
-            image=request.FILES['image'],
             name=request.POST['name'],
             birthday=request.POST['birthday'],
             gender=request.POST['gender'],

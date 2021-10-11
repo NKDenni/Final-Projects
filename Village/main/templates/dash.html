@@ -33,10 +33,10 @@
                     <h5 class="mt-2 mb-0 text-center">Summary</h5>
                     <div class="row d-flex justify-content-center align-content-center">
                         <div class="m-2 p-0 col-10 text-center text-muted" style="max-height: 50px; overflow: hidden;">
-                            {% if this_child.summary == none %}
-                                Share what you would like others to know about your child.
-                            {% else %}
+                            {% if this_child.summary %}
                                 {{this_child.summary | truncatewords:14 }}
+                            {% else %}
+                                Share what you would like others to know about your child.
                             {% endif %}
                         </div>
                     </div>
