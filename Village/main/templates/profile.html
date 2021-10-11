@@ -13,7 +13,13 @@
                         <div class="row p-4">
                             <div class="row col-sm-3 d-flex flex-column" style="max-width: 250px;">
                                 <div class="col pt-4 bg-white d-flex flex-column justify-content-evenly align-items-center align-contents-center shadow" style="border-radius: 10px; width: 230px;">
-                                <form class="d-flex flex-column" action="/update_img" method="POST" enctype="multipart/form-data">
+                                <form class="px-0" action="
+                                {% if this_child %}
+                                    /update
+                                {% else %}
+                                    /new
+                                {% endif %}"
+                                method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                     <img style="max-width: 200px; max-height: 200px;"class="img-thumbnail" 
                                     {% if this_child.image %}
@@ -23,17 +29,7 @@
                                     {% endif %}
                                     alt="Profile Picture"/>
                                     <input id="image" style="width: 200px;" type="file" name="image" accept="image/*">
-                                    <button id="pic" type="submit" class="my-3 p-1 col btn border-secondary shadow" style="background-color: #efefef;" disabled>Update Image</button>
                                 </div>
-                            </form>
-                            <form class="px-0 d-flex" action="
-                                {% if this_child %}
-                                    /update
-                                {% else %}
-                                    /new
-                                {% endif %}"
-                                method="POST">
-                                {% csrf_token %}
                                 <button type="submit" class="mt-4 mb-0 h5 bg-white border-white shadow" style="border-radius: 10px; height: 50px; width: 230px;">Update Profile</button>
                             </div>
                             <div class="row col mx-2 d-flex flex-column">
@@ -220,7 +216,6 @@
             </div>
         </form>
     </div>
-    <script src="{% static 'js/buttondisable.js' %}"></script>
     {% include 'partials/footer.html' %}
 </body>
 </html>

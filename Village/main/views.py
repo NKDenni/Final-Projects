@@ -104,18 +104,6 @@ def profile(request):
 
     return render(request, 'profile.html', context)
 
-def update_img(request):
-    if request.method == "POST":
-        user = User.objects.get(id=request.session['log_user'])
-        kids = user.children.all()
-        this_kid = kids[0]
-
-        this_kid.image = request.FILES['image']
-        this_kid.save()
-
-    return redirect('/dash')
-
-
 def update(request):
     if request.method == "POST":
         errors = Child.objects.child_validator(request.POST)
@@ -132,6 +120,8 @@ def update(request):
         print(this_kid)
 
         this_kid = Child.objects.get(id=this_kid.id)
+        if request.FILES.get('image'):
+            this_kid.image = request.FILES['image']
         this_kid.name = request.POST['name']
         this_kid.birthday = request.POST['birthday']
         this_kid.gender = request.POST['gender']
@@ -148,6 +138,7 @@ def update(request):
         this_kid.meds = request.POST['meds']
         this_kid.doc = request.POST['doc']
         this_kid.save()
+
 
     return redirect('/dash')
 
@@ -183,6 +174,7 @@ def new(request):
         )
         if request.FILES.get('image'):
             child1.image = request.FILES['image']
+            child1.save()
 
     return redirect('/dash')
 

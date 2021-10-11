@@ -6,10 +6,6 @@
     <div class="container">
         {% include 'partials/navbar.html' %}
         <div class="row border border-dark d-flex justify-content-center" style="background-color: #E5E5E5; min-height: 800px;">
-            {% if this_child ==  none %}
-                    {% include 'partials/emptydash.html' %}
-                {% endif %}
-            {% if log_user == this_child.guardian %}
             <div class="row col px-5 mt-3 d-flex flex-column">
                 <div class="ms-4 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 140px;">
                     <a class="my-1 h5 d-flex justify-content-center text-dark">Profile</a>
@@ -270,7 +266,6 @@
                     </div>
                 </div>
             </div>
-        {% endif %}
         </div>
         {% include 'partials/footer.html' %}
     </div>
