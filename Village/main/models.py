@@ -14,7 +14,10 @@ class UserManager(models.Manager):
             r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         date_format = "%Y-%m-%d"
         birthday = postData['birthday']
+        user_list = User.objects.filter(email=postData['email'])
 
+        if user_list:
+            errors['account'] = "Account already exists"
         if len(postData['first']) < 2:
             errors["first"] = "First name must have at least 2 characters"
         if len(postData['last']) < 2:
@@ -76,7 +79,7 @@ class User(models.Model):
 
 class Child(models.Model):
     # id
-    image = models.ImageField(upload_to='child/%Y/%m/%d/', blank=True, default='')
+    image = models.ImageField(upload_to='<int:id>/%Y/%m/%d/', blank=True, default='')
     name = models.CharField(max_length=200, default='Name')
     birthday = models.DateField(auto_now=False)
     gender = models.CharField(max_length=50, blank=True)

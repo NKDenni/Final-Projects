@@ -5,7 +5,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import User, Child
-from django.core.files.storage import FileSystemStorage
+# from django.core.files.storage import FileSystemStorage
 # from .forms import UserForm
 import bcrypt
 
@@ -19,10 +19,6 @@ def register(request):
     if request.method == "POST":
         
         errors = User.objects.basic_validator(request.POST)
-        user_list = User.objects.filter(email=request.POST['email'])
-        if user_list:
-            messages.error(request, "Account already exists")
-            return redirect('/')
 
         if len(errors) > 0:
             for key, value in errors.items():
