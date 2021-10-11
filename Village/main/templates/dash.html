@@ -18,10 +18,34 @@
                         {% endif %}
                         alt="Child Pic" />
                         <div class="col d-flex flex-column justify-content-center align-items-center">
-                            <p class="col mb-0">{{this_child.name}}</p> 
-                            <p class="col mb-0">{{this_child.birthday}}</p>
-                            <p class="col mb-0">{{age}} years</p>
-                            <p class="col mb-0">{{this_child.gender}}</p>
+                            <p class="col mb-0">
+                                {% if this_child.name %}
+                                {{this_child.name}}
+                                {% else %}
+                                Name
+                                {% endif %}
+                            </p> 
+                            <p class="col mb-0">
+                                {% if this_child.birthday %}
+                                {{this_child.birthday}}
+                                {% else %}
+                                Birthday
+                                {% endif %}
+                            </p>
+                            <p class="col mb-0">
+                                {% if this_child.birthday %}
+                                {{age}} years
+                                {% else %}
+                                Age
+                                {% endif %}
+                            </p>
+                            <p class="col mb-0">
+                                {% if this_child.gender %}
+                                {{this_child.gender}}
+                                {% else %}
+                                Gender
+                                {% endif %}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -83,7 +107,6 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         {% endif %}
                         </div>
-                        <!-- need to change thest to python variables-->
                     </div>
                 </div>
                 <div class="ms-4 mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 72px">
@@ -109,8 +132,20 @@
                     <h5 class="mt-2 mb-0 text-center">Emergency Contact</h5>
                     <hr class="my-1">
                     <div class="row d-flex justify-content-center align-content-center" style="min-height: 50px;">
-                        <div class="col-10" style="color: #006FBB;">{{ this_child.econtact }}</div>
-                        <div class="col-10" style="color: #006FBB;">{{ this_child.enumber }}</div>
+                        <div class="col-10" style="color: #006FBB;">
+                            {% if this_child.econtact %}
+                            {{ this_child.econtact }}
+                            {% else %}
+                            Emergency Contact
+                            {% endif %}
+                        </div>
+                        <div class="col-10" style="color: #006FBB;">
+                            {% if this_child.enumber %}
+                            {{ this_child.enumber }}
+                            {% else %}
+                            Emergency Number
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="mt-2 col bg bg-light border rounded-3 shadow" style="max-width: 350px; max-height: 100px">
