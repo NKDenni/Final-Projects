@@ -47,13 +47,15 @@ class SLL {
         }
         return this;
     }
-    printSSL(){
+    display(){
         var kore = this.head;
+        var arr = [];
         while(kore != null){
-            console.log(kore.data);
+            arr.push(kore.data);
             kore = kore.next;
         }
-        return this;
+        console.log(...arr)
+        return arr;
     }
 }
 
@@ -62,11 +64,13 @@ console.log(new_list);
 var node1 = new Node(23);
 console.log(node1);
 new_list.head = node1;
-new_list.addFront(64); 
-new_list.front();
-new_list.printSSL();
+new_list.addFront(64);
+new_list.addFront(11);
+new_list.addFront(612);
+new_list.addFront(14);
 new_list.contains(23);
+new_list.display();
 new_list.removeFront();
-new_list.printSSL();
+new_list.display();
 new_list.removeFront();
-new_list.printSSL();
+new_list.display();
