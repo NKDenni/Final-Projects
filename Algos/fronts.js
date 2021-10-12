@@ -49,13 +49,17 @@ class SLL {
     }
     display(){
         var kore = this.head;
-        var arr = [];
+        var str = '';
         while(kore != null){
-            arr.push(kore.data);
+            if(kore.next == null){
+                str+= kore.data;
+                console.log(str);
+                return str;
+            }
+            str += kore.data + ', '
             kore = kore.next;
         }
-        console.log(...arr)
-        return arr;
+        return str;
     }
 }
 
