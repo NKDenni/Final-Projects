@@ -35,6 +35,18 @@ class SLL {
         console.log(kore.data);
         return this;
     }
+    contains(value){
+        var kore = this.head;
+        while (kore != null){
+            if(kore.data == value){
+                console.log('true')
+            } else {
+                console.log('false')
+            }
+            kore = kore.next;
+        }
+        return this;
+    }
     printSSL(){
         var kore = this.head;
         while(kore != null){
@@ -53,7 +65,7 @@ new_list.head = node1;
 new_list.addFront(64); 
 new_list.front();
 new_list.printSSL();
-console.log(new_list);
+new_list.contains(23);
 new_list.removeFront();
 new_list.printSSL();
 new_list.removeFront();
