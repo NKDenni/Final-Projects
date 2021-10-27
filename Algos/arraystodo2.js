@@ -10,7 +10,7 @@ function reverse(arr){
     return arr;
 }
 
-var testArr = [5, 7, 9, 0, 8, 2, 3]
+var testArr = [5, 7, 9, 0, 8, 2, 3, 21]
 console.log(reverse(testArr));
 
 // Rotate

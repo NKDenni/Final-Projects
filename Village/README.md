@@ -10,5 +10,5 @@ Stretch Goals:
 1) Adding Behaviors and Episodes entry page
 2) History tracking of behaviors
 3) History tracking of episodes
-4) 
-
+4) HTTPS enabled
+5) Deploy
