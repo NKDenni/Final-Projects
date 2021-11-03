@@ -72,21 +72,6 @@ console.log(nToLast(testArr, 4));
 //     Nth - Largest
 // Liam has "N" number of Green Belt stickers for excellent Python projects. Given arr and N, return the Nth - largest element, where(N - 1) elements are larger. Return null if needed.
 
-function removeAt(index, arr) {
-    var tempArr = [];
-    var popVal = arr[index];
-    console.log(popVal);
-    for (var i = 0; i < arr.length; i++) {
-        if (i === index) {
-            i += 1;
-            tempArr.push(arr[i]);
-        } else {
-            tempArr.push(arr[i]);
-        }
-    }
-    return tempArr;
-}
-
 function nLargest(n, arr) {
     var small = arr[0];
     var index = 0;
@@ -102,14 +87,14 @@ function nLargest(n, arr) {
             }
             
         }
-        console.log(index);
-        console.log(small);
+        // console.log(index);
+        // console.log(small);
         arr[index] = arr[arr.length - 1];
         arr[arr.length - 1] = small;
         arr.pop();
         newArr.push(small);
-        console.log(arr);
-        console.log(newArr);
+        // console.log(arr);
+        // console.log(newArr);
         small = arr[0];
     }
     return newArr[newArr.length-n];
@@ -120,4 +105,21 @@ console.log(nLargest(3, testArr));
 
 
 // Skyline Heights
-// Lovely Burbank has a breathtaking view of the Los Angeles skyline.Let’s say you are given an array with heights of consecutive buildings, starting closest to you and extending away.Array[-1, 7, 3] would represent three buildings: first is actually out of view below street level, behind it is second at 7 stories high, third is 3 stories high(hidden behind the 7 - story).You are situated at street level.Return array containing heights of buildings you can see, in order.Given[-1, 1, 1, 7, 3] return [1, 7].Given[0, 4] return [4].As always with challenges, do not use built -in array functions such as unshift().
+// Lovely Burbank has a breathtaking view of the Los Angeles skyline. Let’s say you are given an array with heights of consecutive buildings, starting closest to you and extending away. Array [-1, 7, 3] would represent three buildings: first is actually out of view below street level, behind it is second at 7 stories high, third is 3 stories high(hidden behind the 7 - story). You are situated at street level. Return array containing heights of buildings you can see, in order.Given[-1, 1, 1, 7, 3] return [1, 7]. Given[0, 4] return [4]. As always with challenges, do not use built-in array functions such as unshift().
+
+function heights(arr){
+    var tall = 0;
+    var newArr = [];
+    for(var i =0; i <arr.length; i++){
+        if(arr[i] > tall){
+            tall = arr[i];
+            newArr.push(tall);
+        }
+    }
+    return newArr;
+}
+
+var testArr = [-1, 0, 4, 12, -1, 7, 3, 20];
+var testArr2 = [42, 1, 4, 47, Math.PI, -7, 2, 43];
+console.log(heights(testArr));
+console.log(heights(testArr2));
