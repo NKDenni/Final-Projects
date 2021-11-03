@@ -1,5 +1,5 @@
 // Push Front
-// Given an array and an additional value, insert this value at the beginning of the array.Do this without using any built -in array methods.
+// Given an array and an additional value, insert this value at the beginning of the array. Do this without using any built-in array methods.
 
 function pushFront(val, arr){
     var newArr =[];
@@ -116,3 +116,4 @@ function deDup(arr){
 
 var testArr = ["a", "a", "b", "c", "d", "e", "e", "e", "f", "g", "h", "i", "j", "k", "k"];
 console.log(deDup(testArr));
+
