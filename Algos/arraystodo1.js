@@ -33,7 +33,7 @@ console.log(popFront(testArr));
 function insertAt(val, index, arr) {
     var newArr = [];
     for (var i = 0; i < arr.length; i++) {
-        if( i === index ){
+        if( i === index - 1 ){
             newArr.push(val)
         } 
         newArr.push(arr[i]);

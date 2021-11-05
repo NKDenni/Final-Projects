@@ -9,7 +9,6 @@
 // For example, when given digit array [5, 2, 2, 8, 2], after step 1) it becomes [5, 2, 2, 8], then after step 2) it is [5, 4, 2, 16]. Post - 3) we have[5, 4, 2, 7], then following 4) it becomes 18. After step 5) our value is 20, so ultimately we return true.If the final digit were any non - multiple - of - 10, we would instead return false.
 
 
-
 function isCreditCardValid(arr){
     // console.log(arr.length);
     if (arr.length < 13){
