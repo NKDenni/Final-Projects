@@ -85,13 +85,16 @@
 
 def deDup(arr):
     newArr = []
-    for i in range(len(arr)-1):
+    print(len(arr))
+    for i in range(1, len(arr)-1):
         check = arr[i+1]
+        print(check)
         if check == arr[i]:
-            newArr.append(arr[i])
             continue
         else:
             newArr.append(arr[i])
+    newArr.append(arr[len(arr)-1])
+    print(len(newArr))
     return newArr
 
 
