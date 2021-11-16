@@ -28,7 +28,7 @@ function popFront(arr){
 console.log(popFront(testArr));
 
 // Insert At
-// Given an array, index, and additional value, insert the value into array at given index.Do this without using built-in array methods. You can think of pushFront(arr, val) as equivalent to insertAt(arr, 0, val).
+// Given an array, index, and additional value, insert the value into array at given index. Do this without using built-in array methods. You can think of pushFront(arr, val) as equivalent to insertAt(arr, 0, val).
 
 function insertAt(val, index, arr) {
     var newArr = [];

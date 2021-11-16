@@ -41,7 +41,7 @@ print(insertAt(testVal, testLoc, testArr))
 
 
 # Remove at
-# Given an array and an index into array, remove and return the array value at that index.Do this without using built -in array methods except pop().Think of popFront(arr) as equivalent to removeAt(arr, 0).
+# Given an array and an index into array, remove and return the array value at that index. Do this without using built-in array methods except pop().Think of popFront(arr) as equivalent to removeAt(arr, 0).
 
 def removeAt(index, arr):
     newArr = []
@@ -98,5 +98,5 @@ def deDup(arr):
     return newArr
 
 
-testArr = ["a", "a", "b", "c", "d", "e", "e", "e", "f", "g", "h", "i", "j", "k", "k"]
-print(deDup(testArr))
+# testArr = ["a", "a", "b", "c", "d", "e", "e", "e", "f", "g", "h", "i", "j", "k", "k"]
+# print(deDup(testArr))
