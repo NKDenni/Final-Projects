@@ -62,7 +62,7 @@ function subTotal(arr){
     var n=arr.length, sum = 0, i = 0;
     var newArr = [];
 
-    while (i <= n) {
+    while (i < n) {
         if (i % 10 == 0 && i !=0) {
             newArr.push(sum);
             sum = 0;
@@ -70,14 +70,13 @@ function subTotal(arr){
         // console.log(i);
         sum += arr[i];
         // console.log(sum);
-        if (i+1 == n) {
-            arr.push(sum);
-        };
         newArr.push(arr[i]);
+        if (i + 1 == n) {
+            newArr.push(sum);
+        };
         i++;
     };
-    arr = newArr;
-    return arr;
+    return newArr;
 };
 
 var testArr = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]; 
