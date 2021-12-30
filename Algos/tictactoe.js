@@ -8,23 +8,27 @@
 const prompt = require("prompt-sync")();
 
 var arr = [['', '', ''], ['', '', ''], ['', '', '']];
-var n = arr.length, i=0, m=n*n, count=0, tries=0;
+var n = arr.length, i=0, m=n*n, count=0, tries=0, played=0;
 
 function insertVal(r,c,v, arr){
     if(arr[r][c] != ' '){
         console.log("This location already played pick a different spot.");
+        return;
     }
     if (arr[r][c] == undefined){
         console.log("This is not a playable location.");
+        return;
     }
     arr[r][c] = v;
+    played++;
 }
 
 function playing(arr, player) {
-    while (i < m) {
+    for(i = 0; i < m; i++) {
+        // Check win conditions if played == 4
         console.log("Where would you like to play?");
         let row = prompt("Which row? (1, 2 or 3): ");
-        if (row >= 4) {
+        if (!(row == 1 || row == 2 || row == 3)) {
             console.log("Invalid input");
             tries++;
             if(tries == 3){
@@ -35,7 +39,7 @@ function playing(arr, player) {
         }
         let r = row - 1;
         let col = prompt("Which column? (1, 2 or 3): ");
-        if (col >= 4) {
+        if (!(col == 1 || col == 2 || col == 3)) {
             console.log("Invalid input");
             tries++;
             if (tries == 3) {
@@ -46,6 +50,7 @@ function playing(arr, player) {
         }
         let c = col - 1;
         insertVal(r, c, player, arr);
+        tries = 0;
         console.log(arr);
         i++;
     }
@@ -58,7 +63,7 @@ function player2(arr) {
 function ticTacToe(arr){
     const player = prompt("Lets play! Are you player x or player o?(o or x): ");
     if (!(player == 'x' || player == 'o')){
-        console.log(player);
+        // console.log(player);
         console.log("Invalid selection please pick x or o. ");
         count++;
         // console.log(count);
