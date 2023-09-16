@@ -1,6 +1,7 @@
 # added to ignore by user
 secret.py
 .env
+node_modules/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,django
