@@ -61,15 +61,53 @@ class SLL {
             count++;
         }
     }
+
+    max() {
+        // identify the largest value in the list
+        let max = 0;
+        let curr = this.head;
+        if (this.head == null) {
+            return 0;
+        }
+        while(curr != null){
+            if (max < curr.data) {
+                // console.log(max);
+                max = curr.data;
+            }
+            curr = curr.next;
+        }
+    return max;
+    }
+
+    avg() {
+        let count = 0;
+        let sum = 0;
+        if (this.head == null) {
+            return 0;
+        }
+        let curr = this.head;
+        count++;
+        while (curr != null) {
+            sum += curr.data;
+            curr = curr.next;
+            if(curr.data != 0){
+                continue;
+            }
+            count++;
+        }
+        const average = sum / count;
+        return average;
+    }
 }
 
 let new_list = new SLL();
 console.log(new_list);
-new_list.addNode(3);
-new_list.addNode(5);
-new_list.addNode(7);
-new_list.addNode(9);
+new_list.addNode(10);
+new_list.addNode(0);
+new_list.addNode(0);
+new_list.addNode(0);
+new_list.addNode(0);
 new_list.addNode(11);
-new_list.addNode(13);
-console.log(new_list);
 console.log(new_list.length());
+console.log(new_list.max());
+console.log(new_list.avg());
